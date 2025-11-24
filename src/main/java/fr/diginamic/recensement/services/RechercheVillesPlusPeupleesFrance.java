@@ -24,7 +24,7 @@ public class RechercheVillesPlusPeupleesFrance extends MenuService {
 
 		System.out.println("Veuillez saisir un nombre de villes:");
 		String nbVillesStr = scanner.nextLine();
-		if (!NumberUtils.isDigits(nbVillesStr))
+		if (!NumberUtils.isParsable(nbVillesStr))
 		{
 			throw new ChiffreAuLieuDeLettreException("Des lettres ont été rentré au lieu de chiffre");
 		}

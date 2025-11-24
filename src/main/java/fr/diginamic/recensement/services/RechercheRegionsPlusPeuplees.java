@@ -28,7 +28,7 @@ public class RechercheRegionsPlusPeuplees extends MenuService {
 
 		System.out.println("Veuillez saisir un nombre de régions:");
 		String nbRegionsStr = scanner.nextLine();
-		if (!NumberUtils.isDigits(nbRegionsStr))
+		if (!NumberUtils.isParsable(nbRegionsStr))
 		{
 			throw new ChiffreAuLieuDeLettreException("Des lettres ont été rentré au lieu de chiffre");
 		}

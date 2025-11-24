@@ -35,7 +35,7 @@ public class RecherchePopulationBorneService extends MenuService {
 
 		System.out.println("Choississez une population maximum (en milliers d'habitants): ");
 		String saisieMax = scanner.nextLine();
-		if (!NumberUtils.isDigits(saisieMax))
+		if (!NumberUtils.isParsable(saisieMax))
 		{
 			throw new ChiffreAuLieuDeLettreException("Des lettres ont été rentré au lieu de chiffre");
 		}
