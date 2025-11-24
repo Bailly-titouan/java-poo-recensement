@@ -3,6 +3,10 @@ package fr.diginamic.recensement.services;
 import java.util.Scanner;
 
 import fr.diginamic.recensement.entites.Recensement;
+import fr.diginamic.recensement.exception.BorneMinException;
+import fr.diginamic.recensement.exception.ChiffreAuLieuDeLettreException;
+import fr.diginamic.recensement.exception.DepartementException;
+import fr.diginamic.recensement.exception.MinMaxException;
 
 /**
  * Classe représentant un service
@@ -19,5 +23,5 @@ public abstract class MenuService {
 	 * @param lignes  lignes du fichier
 	 * @param scanner scanner
 	 */
-	public abstract void traiter(Recensement recensement, Scanner scanner);
+	public abstract void traiter(Recensement recensement, Scanner scanner) throws DepartementException, BorneMinException, ChiffreAuLieuDeLettreException, MinMaxException;
 }

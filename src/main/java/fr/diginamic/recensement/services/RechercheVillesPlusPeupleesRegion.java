@@ -8,6 +8,9 @@ import java.util.Scanner;
 import fr.diginamic.recensement.entites.Recensement;
 import fr.diginamic.recensement.entites.Ville;
 import fr.diginamic.recensement.services.comparators.EnsemblePopComparateur;
+import fr.diginamic.recensement.exception.BorneMinException;
+import fr.diginamic.recensement.exception.ChiffreAuLieuDeLettreException;
+import org.apache.commons.lang3.math.NumberUtils;
 
 /**
  * Cas d'utilisation: affichage des N villes les plus peuplées d'une région
@@ -19,14 +22,23 @@ import fr.diginamic.recensement.services.comparators.EnsemblePopComparateur;
 public class RechercheVillesPlusPeupleesRegion extends MenuService {
 
 	@Override
-	public void traiter(Recensement recensement, Scanner scanner) {
+	public void traiter(Recensement recensement, Scanner scanner) throws ChiffreAuLieuDeLettreException, BorneMinException {
 
 		System.out.println("Veuillez saisir un nom de région:");
 		String nomRegion = scanner.nextLine();
 
 		System.out.println("Veuillez saisir un nombre de villes:");
 		String nbVillesStr = scanner.nextLine();
+		if (!NumberUtils.isDigits(nbVillesStr))
+		{
+			throw new ChiffreAuLieuDeLettreException("Des lettres ont été rentré au lieu de chiffre");
+		}
+
 		int nbVilles = Integer.parseInt(nbVillesStr);
+		if (nbVilles < 0)
+		{
+			throw new BorneMinException("Chiffre plus petit que 0");
+		}
 
 		List<Ville> villesRegions = new ArrayList<Ville>();
 
